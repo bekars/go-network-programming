@@ -1,8 +1,8 @@
 # 概要
 
-* [卷 I](part1/README.md)
-    * [写作很棒](part1/writing.md)
-    * [GitBook很酷](part1/gitbook.md)
-* [卷 II](part2/README.md)
-    * [期待反馈](part2/feedback_please.md)
-    * [更好的写作工具](part2/better_tools.md)
+* [Part I: 网络架构](part1/README.md)
+    * [Chapter 1: 网络系统概述](part1/network-system-intro.md)
+    * [Chapter 2: IP协议](part1/ip-protocol.md)
+* [Part II: Socket网络编程](part2/README.md)
+    * [Chapter 3: 可靠的TCP数据流](part2/tcp-flow.md)
+    * [Chapter 4: 传送TCP数据](part2/sending-tcp-data.md)
