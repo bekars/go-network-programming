@@ -1,2 +1,4 @@
-# go-network-programming
-Go网络编程
+# Go网络编程
+
+深入、全面剖析go语言网络编程技术。
+
