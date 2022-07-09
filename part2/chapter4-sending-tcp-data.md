@@ -12,9 +12,9 @@
 
 ## 发送和接收数据
 
-### *读取数据到可变长缓存中*
+### *读取数据到可变长缓存中A*
 
-{% include "./chapter3-tcp-flow.md" %}
+{% include "chapter3-tcp-flow.md" %}
 
 
 ```golang
