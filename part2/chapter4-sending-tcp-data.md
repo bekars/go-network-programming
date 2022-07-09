@@ -12,14 +12,14 @@
 
 ## 发送和接收数据
 
-### *读取数据到可变长缓存中AAA*
+### *读取数据到可变长缓存中BBB*
 
 {% include "chapter3-tcp-flow.md" %}
 
 {% import "./chapter3-tcp-flow.md" %}
 {% import "chapter3-tcp-flow.md" %}
 
-{% include "git+https://github.com/bekars/go-network-programming/blob/main/code/part2/4-read-data_test.go" %}
+{% include "git+https://github.com/bekars/go-network-programming.git/code/part2/4-read-data_test.go" %}
 
 
 ```golang
