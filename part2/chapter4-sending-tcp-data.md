@@ -14,6 +14,9 @@
 
 ### *读取数据到可变长缓存中*
 
+{% include "./chapter3-tcp-flow.md" %}
+
+
 ```golang
 package part2
 
