@@ -12,9 +12,9 @@
 
 ## 发送和接收数据
 
-### *读取数据到可变长缓存中BBBBBB*
+### *读取数据到可变长缓存中CCC*
 
-{% include "git+https://github.com/GitbookIO/documentation.git/README.md#0.0.1" %}
+{% include "git+https://github.com/GitbookIO/example.git/README.md" %}
 
 {% include "git+https://github.com/bekars/go-network-programming.git/code/part2/4-read-data_test.go" %}
 
