@@ -16,6 +16,9 @@
 
 {% include "chapter3-tcp-flow.md" %}
 
+{% import "./chapter3-tcp-flow.md" %}
+{% import "chapter3-tcp-flow.md" %}
+
 
 ```golang
 package part2
