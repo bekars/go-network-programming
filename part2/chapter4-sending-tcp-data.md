@@ -4,9 +4,19 @@
 
 ## 使用net.Conn接口
 
-大部分代码都会使用net.Conn接口实现，因为它提供了大多数实例所需要的功能。
+大部分代码都会使用net.Conn接口实现，因为它提供了大多数实例所需要的功能，通过net.Conn接口我们可以写出非常健壮的跨平台通信系统。
 
-```
+两个经常被用到的函数是Read和Write，他们实现了io.Reader和io.Writer接口，这两个接口在Go的标准库中非常常见。使用这两个接口可以写出功能非常强大的网络应用程序。
+
+我们使用net.Conn的Close方法来关闭网络链接，这个方法返回nil表示链接被正常关闭，否则返回error。SetReadDeadline和SetWriteDeadline方法接收一个time.Time的对象，通过设置一个绝对时间可以在read和write方法中返回超时错误。SetDeadline会同时为read和write设置结束时间。
+
+## 发送和接收数据
+
+### *读取数据到可变长缓存中*
+
+```golang
+package main
+
 func main() {
     go send_data()
     return
