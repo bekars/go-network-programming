@@ -7,3 +7,4 @@
 * [Part II: Socket网络编程](part2/README.md)
   * [Chapter 3: 可靠的TCP数据流](part2/chapter3-tcp-flow.md)
   * [Chapter 4: 传送TCP数据](part2/chapter4-sending-tcp-data.md)
+    * [Chapter 4.1: 读取数据到固定长度的缓存中](part2/chapter4-1-read-data-into-a-fixed-buffer.md)
