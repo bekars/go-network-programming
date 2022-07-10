@@ -1,11 +1,71 @@
-## 使用scanner读取分段数据
-
+##  使用scanner读取分段数据
+  
+  
 TCP协议是一个面向数据流的协议，这意味着客户端程序收到的是一条字节流，从二进制数据里流我们很难获得一个信息的开始和结束位置。
-
+  
 例如，你的客户端代码正在从邮件服务器读取一个email的信息，你将不得不观察每一个字节去寻找分割符特征，以此来获得邮件中每段信息的边界。
-
+  
 假如你选择使用分隔符来确定消息的边界，一些处于边缘的情况通过代码来处理并不容易。比如，你通过Read接口从网络链接上读取了1KB的数据，但是发现其中有两个分隔符，这个说明这里有两段消息，但是无法确定第二段消息收到的是否完整。你再读取1KB的数据，这些数据中没有分隔符，你可以确定这1KB数据是之前第二个消息的一部分。如果你读到的1KB数据只有分隔符而没有其他数据呢？如果分隔符在两次读取中间被切断了呢？你需要考虑各种情况的编码实现。
-
+  
 这个看起来很复杂，因为你需要考虑数据跨多次读取以及需要处理各种错误情况。通常情况你需要自己去实现这个逻辑，但是`bufio.Scanner`已经帮你实现了。
-
-@import "../code/part2/4-2_test.go" {code_block=true class="line-numbers"}
+  
+```go
+package part2
+  
+import (
+	"bufio"
+	"net"
+	"reflect"
+	"testing"
+)
+  
+const payload = "The bigger the interface, the weaker the abstraction."
+  
+func TestScanner(t *testing.T) {
+	listener, err := net.Listen("tcp", "127.0.0.1:") // ⓵
+	if err != nil {
+		t.Fatal(err)
+	}
+  
+	go func() {
+		conn, err := listener.Accept()
+		if err != nil {
+			t.Log(err)
+			return
+		}
+		defer conn.Close()
+  
+		_, err = conn.Write([]byte(payload))
+		if err != nil {
+			t.Error(err)
+		}
+	}()
+  
+	conn, err := net.Dial("tcp", listener.Addr().String())
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer conn.Close()
+  
+	scanner := bufio.NewScanner(conn)
+	scanner.Split(bufio.ScanWords)
+  
+	var words []string
+	for scanner.Scan() {
+		words = append(words, scanner.Text())
+	}
+  
+	err = scanner.Err()
+	if err != nil {
+		t.Error(err)
+	}
+  
+	expected := []string{"The", "bigger", "the", "interface,", "the", "weaker", "the", "abstraction."}
+	if !reflect.DeepEqual(words, expected) {
+		t.Fatal("inaccurate scanned word list")
+	}
+	t.Logf("Scanned words: %#v", words)
+}
+  
+```  
+  

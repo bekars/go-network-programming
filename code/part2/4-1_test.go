@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestReadIntoBuff(t *testing.T) {
+func TestReadIntoFixedBuff(t *testing.T) {
 	payload := make([]byte, 1<<24) // 16MB data
 	_, err := rand.Read(payload)
 	if err != nil {
