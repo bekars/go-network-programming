@@ -1,6 +1,6 @@
 # Table of contents
 
-* [写在前面](README.md)
+* [README](README.md)
 * [Part I 网络架构](part1/README.md)
   * [Chapter1 网络系统概述](part1/network-system-intro.md)
   * [Chapter2 IP协议](part1/ip-protocol.md)
