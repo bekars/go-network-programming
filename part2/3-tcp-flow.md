@@ -4,4 +4,4 @@ tcp flow
 
 [import](../code/part1/http_test.go)
 
-<% include "../code/part1/http_test.go" /%>
+{% include "../code/part1/http_test.go" %}
